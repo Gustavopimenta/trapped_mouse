@@ -12,11 +12,11 @@ maze = []
 row = 0
 col = 0
 
-player = 1
-wall = 2
-path = 3
-deadend = 4
-target = 5
+player = 'm'
+wall = '1'  # Alterado para string
+path = '3'   # Alterado para string
+deadend = '4'  # Alterado para string
+target = 'e'
 
 prow = 0
 pcol = 0
@@ -25,7 +25,7 @@ trow = 0
 tcol = 0
 
 # ordem: direita[R], esquerda[L], baixo[D] e cima[U](alterar depois).
-moveOrder = moveOrder = ['r', 'l', 'd', 'u']
+moveOrder = ['d', 'r', 'l', 'u']
 ourMoves = []
 moveStack = []  # Pilha para armazenar os movimentos
 
@@ -60,7 +60,7 @@ while True:
     drawMaze(maze, row, col)
 
     if prow == trow and pcol == tcol:
-        print("Success 🐀")
+        print("Jerry está livre! 🐀")
         print(ourMoves, len(ourMoves))
         break
 
@@ -90,4 +90,4 @@ while True:
             pygame.quit()
             sys.exit()
     pygame.display.update()
-    clock.tick(5)
+    clock.tick(60)
