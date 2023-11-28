@@ -4,11 +4,11 @@ maze = []
 row = 0
 col =0 
 
-player = 1
+player = 1 
 wall = 2 
-path= 3
+path= 3 
 deadend = 4
-target = 5
+target = 5 
 
 prow = 0
 pcol = 0
@@ -16,7 +16,7 @@ pcol = 0
 trow = 0
 tcol = 0
 #ordem: direita[R], esquerda[L], baixo[D] e cima[U](alterar depois).
-moveOrder = ['d','r','l','u']
+moveOrder = ['r', 'l', 'd', 'u']
 ourMoves = []
 def loadMaze():
     os.system("clear")
@@ -104,7 +104,7 @@ def findMoveOrder(maze,row,col,prow, pcol,trow, tcol):
     else:
         moveOrder.append('l')
     
-    while(len(moveOrder)<4):                #procurar saber o que faz essa parte do código(depois apagar esse comentário)
+    while(len(moveOrder)<4):                
         if not 'r' in moveOrder:
             moveOrder.append('r')
         if not 'd' in moveOrder:
@@ -114,33 +114,8 @@ def findMoveOrder(maze,row,col,prow, pcol,trow, tcol):
         if not 'u' in moveOrder:
             moveOrder.append('u')
     return moveOrder
-'''
-moveMade = False
-moveOrder = findMoveOrder(maze,row,col,prow, pcol,trow, tcol)
-while True:
-    if prow == trow and pcol == tcol:
-        print("Success 🐀")
-        print(ourMoves, len(ourMoves))
-        break
 
-    moveMade = False
 
-    for move in moveOrder:
-        print(move, ourMoves)
-        #user_input = input()
-        #time.sleep(0.4)
-
-        if checkMoveDirection(maze, row, col, prow, pcol, move):
-            maze, prow, pcol = moveDirection(maze, row, col, prow, pcol, move)
-            ourMoves.append(move)
-            moveMade = True
-            printMaze(maze, row, col)
-            break
-
-    if not moveMade:
-        maze, prow, pcol = undoMoveDirection(maze, row, col, prow, pcol, ourMoves.pop())
-        printMaze(maze, row, col)
-'''
 
     
  
