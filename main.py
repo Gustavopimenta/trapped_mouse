@@ -13,9 +13,9 @@ row = 0
 col = 0
 
 player = 'm'
-wall = '1'  # Alterado para string
-path = '3'   # Alterado para string
-deadend = '4'  # Alterado para string
+wall = '1'  
+path = '3'   
+deadend = '4'  
 target = 'e'
 
 prow = 0
@@ -51,6 +51,7 @@ def drawMaze(maze, row, col):
             elif maze[r][c] == path:
                 cellColor = 'pink'
 
+            # Usar dimensões calculadas dinamicamente
             pygame.draw.rect(DISPLAYSURF, cellColor, (c * cellWidth, r * cellHeight, cellWidth, cellHeight),
                              width=cellWidth // 4)
 
@@ -90,4 +91,4 @@ while True:
             pygame.quit()
             sys.exit()
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(10)

@@ -24,7 +24,7 @@ def loadMaze():
     f = open("maze.txt")
     row = 0
     for line in f:
-        maze.append(list(line.strip()))  # Alterado para ler cada caractere individualmente
+        maze.append(list(line.strip()))
         col = len(line.strip())
         if player in line:
             prow, pcol = row, line.index(player)

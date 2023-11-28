@@ -11,7 +11,7 @@ EDL - Problema de um rato preso no labrinto.
 5. add intelligence to the solve [x]
 6. pygame display 
 
-# labirinto 1
+# Labirinto 1
 m000000000
 0000000000
 0100011000
@@ -36,3 +36,6 @@ m000000000
 0000001000
 0000000000
 000001111m 
+
+
+# Labirinto 25x25
