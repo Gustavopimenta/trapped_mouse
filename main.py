@@ -1,4 +1,4 @@
-import os 
+import os, time
 
 maze = []
 row = 0
@@ -7,6 +7,7 @@ col =0
 player = 1
 wall = 2 
 path= 3
+deadend = 4
 target = 5
 
 prow = 0
@@ -15,6 +16,8 @@ pcol = 0
 trow = 0
 tcol = 0
 
+moveOrder = ['d','r','l','u']
+ourMoves = []
 def loadMaze():
     os.system("clear")
     f = open("maze.txt")
@@ -45,11 +48,8 @@ printMaze(maze, row, col)
 print(row, col, prow, pcol, trow, tcol)
 
 
-#check valid move - down
-def checkMoveDown(maze, row, col, prow, pcol):
-    if prow+1 < row and maze[prow+1][col] == 0:
-        return True
-    return False 
+#check valid move 
+
 
 def checkMoveDirection(maze, row, col, prow, pcol, direction):
     nprow = prow 
@@ -66,11 +66,6 @@ def checkMoveDirection(maze, row, col, prow, pcol, direction):
         return True
     return False
 # down           
-def moveDown(maze, row, col, prow, pcol):
-    maze[prow][pcol] = path
-    prow+=1
-    maze[prow][pcol] = player
-    return (maze, prow, pcol)
 
 def moveDirection(maze, row, col, prow,pcol, direction):
     maze[prow][pcol] = path
@@ -85,18 +80,51 @@ def moveDirection(maze, row, col, prow,pcol, direction):
     maze[prow][pcol] = player
     return (maze, prow, pcol)
 
-while(True):
+def undoMoveDirection(maze, row, col, prow,pcol, direction):
+    maze[prow][pcol] = deadend
+    if direction == 'd':
+        prow-=1
+    elif direction == 'u':
+        prow+=1
+    elif direction == 'r':
+        pcol-=1
+    elif direction == 'l':
+        pcol+=1
+    maze[prow][pcol] = player
+    return (maze, prow, pcol)
+
+moveMade = False
+while True:
     if prow == trow and pcol == tcol:
-        print("Success")
+        print("Success 🐀")
+        print(ourMoves)
         break
-    move = input("Which direction? r, l, d, u: ")
-    
-    #print(prow, pcol, maze)
-    if checkMoveDirection(maze, row, col, prow, pcol, move):
-        maze, prow, pcol = moveDirection(maze, row, col, prow, pcol, move)
+
+    moveMade = False
+
+    for move in moveOrder:
+        print(move, ourMoves)
+        #user_input = input()
+        #time.sleep(0.4)
+
+        if checkMoveDirection(maze, row, col, prow, pcol, move):
+            maze, prow, pcol = moveDirection(maze, row, col, prow, pcol, move)
+            ourMoves.append(move)
+            moveMade = True
+            printMaze(maze, row, col)
+            break
+
+    if not moveMade:
+        maze, prow, pcol = undoMoveDirection(maze, row, col, prow, pcol, ourMoves.pop())
         printMaze(maze, row, col)
-                        
- 
+
+
     
  
-#https://www.youtube.com/watch?v=rRUtQRB82os
+ 
+ 
+ 
+ 
+ 
+ 
+ 
