@@ -1,2 +1,2 @@
 # trapped_mouse-
-EDL - Problema de um rato preso no labrinto. 
+EDL - O clássico problema do rato preso no labirinto.  
