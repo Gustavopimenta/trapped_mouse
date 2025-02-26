@@ -1,2 +1,2 @@
 # trapped_mouse-
-EDL - O clássico problema do rato preso no labirinto.  
+Linear Data Structure - the classic mouse trapped in the labyrinth in python. 
